@@ -21,7 +21,7 @@ export default function Contact() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <div>
+          <div className="flex flex-col">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {contact.cards.map((c) => {
                 const external = c.href.startsWith("http");
@@ -40,7 +40,7 @@ export default function Contact() {
             </div>
 
             <form
-              className="mt-6 space-y-4"
+              className="mt-6 flex flex-1 flex-col gap-4"
               onSubmit={(e) => {
                 e.preventDefault();
                 setSent(true);
@@ -53,9 +53,8 @@ export default function Contact() {
               <input type="email" placeholder={contact.form.email} className={inputClass} />
               <textarea
                 required
-                rows={4}
                 placeholder={contact.form.message}
-                className={`resize-none ${inputClass}`}
+                className={`min-h-[140px] flex-1 resize-none ${inputClass}`}
               />
               <button
                 type="submit"
@@ -84,31 +83,31 @@ export default function Contact() {
             </form>
           </div>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-6">
             <div className="overflow-hidden rounded-[6px] border border-ink-15">
               <iframe
                 src="https://www.google.com/maps?cid=14531505238062618007&output=embed"
                 title="Mapa: Květinářství fLOVErs, Žižkov"
-                className="h-[300px] w-full lg:h-[360px]"
+                className="h-[300px] w-full lg:h-[340px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <div className="rounded-[6px] border border-ink-15 bg-gradient-to-br from-paper to-paper-2 p-6 transition-all duration-300 hover:shadow-[0_12px_30px_rgba(36,24,18,0.1)]">
-              <div className="mb-4 flex items-center justify-between pb-4 border-b-2 border-sage/20">
+            <div className="rounded-[6px] border border-ink-15 bg-paper p-6">
+              <div className="mb-5 flex items-center justify-between border-b border-ink-15 pb-4">
                 <h3 className="font-display text-[20px] text-ink">{contact.hoursTitle}</h3>
                 <span className="rounded-full bg-sage/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-sage">
                   {contact.hoursBadge}
                 </span>
               </div>
               <div className="space-y-3">
-                {contact.hours.map((h, i) => (
+                {contact.hours.map((h) => (
                   <div
                     key={h.day}
-                    className="flex items-center justify-between gap-4 py-1.5"
+                    className="flex items-baseline justify-between gap-4"
                   >
-                    <span className="text-[14px] font-medium text-ink-70">{h.day}</span>
-                    <span className="whitespace-nowrap rounded-[4px] bg-sage/10 px-3 py-1 text-[14px] font-semibold text-sage">
+                    <span className="text-[14px] text-ink-70">{h.day}</span>
+                    <span className="whitespace-nowrap text-[14px] font-semibold text-ink">
                       {h.time}
                     </span>
                   </div>
